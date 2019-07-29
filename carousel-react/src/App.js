@@ -27,21 +27,41 @@ class App extends Component {
     });
   };
 
+  handleDelete(index) {
+    const arr = this.state.property.index;
+    const newIndex = this.state.property.index + 1;
+    arr.splice(index, 1);
+    this.setState({
+      properties: arr,
+      property: data.properties[newIndex]
+    });
+  }
+
   render() {
     const { properties, property } = this.state;
     return (
       <div className="App">
+        <div class="btn-group" role="group">
+          <button
+            class="btn btn-outline-dark btn-lg"
+            onClick={() => this.prevProperty()}
+            disabled={property.index === 0}
+          >
+            <span className="glyphicon glyphicon-chevron-left" />
+          </button>
+          <button
+            class="btn btn-outline-dark btn-lg"
+            onClick={() => this.nextProperty()}
+            disabled={property.index === data.properties.length - 1}
+          >
+            <span className="glyphicon glyphicon-chevron-right" />
+          </button>
+        </div>
         <button
-          onClick={() => this.prevProperty()}
-          disabled={property.index === 0}
+          class="btn btn-outline-dark btn-lg"
+          onClick={this.handleDelete.bind(this, this.state.property.index)}
         >
-          Précédent
-        </button>
-        <button
-          onClick={() => this.nextProperty()}
-          disabled={property.index === data.properties.length - 1}
-        >
-          Suivant
+          Supprimeer
         </button>
 
         <div className="page">
