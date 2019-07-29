@@ -3,7 +3,7 @@ import "./App.css";
 import Card from "./Card";
 import data from "./data/data";
 import "bootstrap/dist/css/bootstrap.css";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 // class component
 class App extends Component {
   constructor(props) {
@@ -42,6 +42,14 @@ class App extends Component {
     const { properties, property } = this.state;
     return (
       <div className="App">
+        <section>
+          <img
+            src={require("./img/Logo.jpg")}
+            className="App-logo"
+            alt="logo"
+          />
+          <h1>Equipe WeLoveDevs</h1>
+        </section>
         <div class="btn-group" role="group">
           <button
             class="btn btn-outline-dark btn-lg"
@@ -62,31 +70,21 @@ class App extends Component {
           class="btn btn-outline-dark btn-lg"
           onClick={this.handleDelete.bind(this, this.state.property.index)}
         >
-          Supprimeer
+          Supprimer
         </button>
 
-        <div className="page">
-          <section>
-            <img
-              src={require("./img/Logo.jpg")}
-              className="App-logo"
-              alt="logo"
-            />
-            <h1>Equipe WeLoveDevs</h1>
-          </section>
-          <div className="col">
-            <div className={`cards-slider active-slide-${property.index}`}>
-              <div
-                className="cards-slider-wrapper"
-                style={{
-                  transform: `translateX(-${property.index *
-                    (100 / properties.length)}%)`
-                }}
-              >
-                {properties.map(property => (
-                  <Card key={property._id} property={property} />
-                ))}
-              </div>
+        <div className="col">
+          <div className={`cards-slider active-slide-${property.index}`}>
+            <div
+              className="cards-slider-wrapper"
+              style={{
+                transform: `translateX(-${property.index *
+                  (100 / properties.length)}%)`
+              }}
+            >
+              {properties.map(property => (
+                <Card key={property._id} property={property} />
+              ))}
             </div>
           </div>
         </div>
