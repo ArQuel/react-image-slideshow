@@ -3,6 +3,7 @@ import "./App.css";
 import Card from "./Card";
 import data from "./data/data";
 import "bootstrap/dist/css/bootstrap.css";
+import Header from "./components/Header";
 // class component
 class App extends Component {
   constructor(props) {
